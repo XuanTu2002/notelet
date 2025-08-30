@@ -50,7 +50,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const readMoreBtn = document.createElement('button');
       readMoreBtn.textContent = 'Read more';
-      readMoreBtn.className = 'read-more-btn';
+      readMoreBtn.className = 'action-btn read-more';
+
+      const copyBtn = document.createElement('button');
+      copyBtn.innerHTML = `
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+        </svg>
+      `;
+      copyBtn.className = 'action-btn';
+      copyBtn.title = 'Copy to clipboard';
+      copyBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        navigator.clipboard.writeText(note);
+        copyBtn.innerHTML = `
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        `;
+        setTimeout(() => {
+          copyBtn.innerHTML = `
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+          `;
+        }, 1000);
+      });
+
+      const buttonGroup = document.createElement('div');
+      buttonGroup.className = 'button-group';
+      buttonGroup.appendChild(copyBtn);
+      buttonGroup.appendChild(readMoreBtn);
+      noteHeader.appendChild(buttonGroup);
 
       readMoreBtn.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -64,8 +97,6 @@ document.addEventListener('DOMContentLoaded', () => {
           noteDiv.classList.add('expanded');
         }
       });
-
-      noteHeader.appendChild(readMoreBtn);
     }
 
     const deleteBtn = document.createElement('button');

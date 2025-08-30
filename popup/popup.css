@@ -121,12 +121,63 @@ button:hover {
   text-decoration: none;
 }
 
-.delete-btn {
-  background-color: #dc3545;
+.button-group {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+.action-btn {
+  background: none;
+  border: none;
+  color: #5f6368;
+  padding: 4px 6px;
+  margin: 0;
+  cursor: pointer;
+  font-size: 0.8em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+  height: 24px;
+  min-width: 24px;
+  white-space: nowrap;
+}
+
+.action-btn:hover {
+  background-color: #f1f3f4;
+  color: #1a73e8;
+}
+
+.action-btn svg {
+  pointer-events: none;
+}
+
+.action-btn.read-more {
   padding: 4px 8px;
+  gap: 4px;
+  min-width: auto;
+}
+
+.delete-btn {
+  background-color: #f1f3f4;
+  color: #5f6368;
+  padding: 4px 12px;
   font-size: 12px;
   margin-top: 8px;
   display: block;
   width: fit-content;
   margin-left: auto;
+  border: 1px solid #dadce0;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.delete-btn:hover {
+  background-color: #fce8e6;
+  color: #d93025;
+  border-color: #f4b9b7;
 }
