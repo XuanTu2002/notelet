@@ -1,0 +1,118 @@
+body {
+  width: 300px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  margin: 0;
+  padding: 16px;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+h1 {
+  margin: 0 0 12px 0;
+  font-size: 1.5rem;
+  color: #1a73e8;
+  text-align: center;
+}
+
+.note-input {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 8px;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  resize: none;
+  font-family: inherit;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #1a73e8;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #1557b0;
+}
+
+#notes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.note {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 12px;
+  position: relative;
+  word-break: break-word;
+  transition: all 0.2s ease;
+}
+
+.note p {
+  margin: 0 0 8px 0;
+  white-space: pre-wrap;
+  line-height: 1.5;
+  max-height: 10em;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  /* Show about 6 lines */
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+}
+
+.note.expanded p {
+  -webkit-line-clamp: unset;
+  max-height: none;
+  display: block;
+}
+
+.read-more-btn {
+  background: none;
+  border: none;
+  color: #1a73e8;
+  padding: 4px 0;
+  margin: 4px 0;
+  cursor: pointer;
+  font-size: 0.9em;
+  text-align: left;
+  display: inline-block;
+}
+
+.read-more-btn:hover {
+  text-decoration: underline;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  padding: 4px 8px;
+  font-size: 12px;
+  margin-top: 8px;
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+}
