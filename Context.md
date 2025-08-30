@@ -1,4 +1,4 @@
-# Mini Notes Chrome Extension – Context File
+# Notelet - A Mini Notes Chrome Extension
 
 ## 📌 Purpose
 A minimalist Chrome Extension to save and manage text notes (e.g., ChatGPT prompts, website links, stories).  
@@ -16,12 +16,6 @@ It should be **aesthetic, lightweight, distraction-free**.
   - List view of existing notes.
   - Edit + delete actions.
 
-### Nice-to-have (Future)
-- Organize notes into folders/categories.
-- Star/favorite notes (show pinned at top).
-- Sync notes across devices with `chrome.storage.sync`.
-- Search/filter notes.
-
 ---
 
 ## 🛠 Tech Stack
@@ -33,3 +27,11 @@ It should be **aesthetic, lightweight, distraction-free**.
 ---
 
 ## 📂 Folder Structure
+/note-extension
+├─ manifest.json        # Chrome extension config
+├─ popup.html           # UI for popup window
+├─ popup.js             # JS logic (CRUD)
+├─ style.css            # Styling
+├─ icons/
+│   └─ icon128.png      # Extension icon
+└─ README.md            # Project guide

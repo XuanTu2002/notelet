@@ -31,13 +31,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const noteDiv = document.createElement('div');
     noteDiv.className = 'note';
 
+    // Create note header
+    const noteHeader = document.createElement('div');
+    noteHeader.className = 'note-header';
+
     const noteText = document.createElement('p');
+    noteText.textContent = note;
+
+    // Add note content to the note div
+    const noteContent = document.createElement('div');
+    noteContent.className = 'note-content';
+    noteContent.appendChild(noteText);
 
     // Check if note exceeds preview length
     if (note.length > MAX_PREVIEW_LENGTH) {
       const preview = note.substring(0, MAX_PREVIEW_LENGTH) + '...';
-      const fullText = note;
-
       noteText.textContent = preview;
 
       const readMoreBtn = document.createElement('button');
@@ -46,22 +54,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
       readMoreBtn.addEventListener('click', (e) => {
         e.stopPropagation();
-        if (noteText.textContent === preview) {
-          noteText.textContent = fullText;
-          readMoreBtn.textContent = 'Show less';
-          noteDiv.classList.add('expanded');
-        } else {
+        if (noteDiv.classList.contains('expanded')) {
           noteText.textContent = preview;
           readMoreBtn.textContent = 'Read more';
           noteDiv.classList.remove('expanded');
+        } else {
+          noteText.textContent = note;
+          readMoreBtn.textContent = 'Show less';
+          noteDiv.classList.add('expanded');
         }
       });
 
-      noteDiv.appendChild(noteText);
-      noteDiv.appendChild(readMoreBtn);
-    } else {
-      noteText.textContent = note;
-      noteDiv.appendChild(noteText);
+      noteHeader.appendChild(readMoreBtn);
     }
 
     const deleteBtn = document.createElement('button');
@@ -72,6 +76,9 @@ document.addEventListener('DOMContentLoaded', () => {
       deleteNote(index);
     });
 
+    // Assemble the note
+    noteDiv.appendChild(noteHeader);
+    noteDiv.appendChild(noteContent);
     noteDiv.appendChild(deleteBtn);
 
     return noteDiv;
